@@ -9,11 +9,11 @@ import {ErrorNotice} from '../../../shared/components/error-notice';
 import {Loading} from '../../../shared/components/loading';
 import {NamespaceFilter} from '../../../shared/components/namespace-filter';
 import {PhaseIcon} from '../../../shared/components/phase-icon';
+import {Timestamp} from '../../../shared/components/timestamp';
 import {ZeroState} from '../../../shared/components/zero-state';
 import {historyUrl} from '../../../shared/history';
 import {ListWatch} from '../../../shared/list-watch';
 import {services} from '../../../shared/services';
-import {Timestamp} from "../../../shared/components/timestamp";
 
 export const PipelineList = ({match, history}: RouteComponentProps<any>) => {
     // state for URL and query parameters
