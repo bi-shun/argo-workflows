@@ -1,4 +1,4 @@
-import {ObjectMeta, WatchEvent} from 'argo-ui/src/models/kubernetes';
+import {ObjectMeta, Time, WatchEvent} from 'argo-ui/src/models/kubernetes';
 
 interface Metrics {
     total?: number;
@@ -38,6 +38,7 @@ export interface Step {
         phase?: string;
         message?: string;
         replicas: number;
+        lastScaledAt?: Time;
         sinkStatuses?: {[name: string]: {lastMessage?: {data: string}; pending?: number; metrics?: {[name: string]: Metrics}}};
         sourceStatuses?: {[name: string]: {lastMessage?: {data: string}; pending?: number; metrics?: {[replica: string]: Metrics}}};
     };

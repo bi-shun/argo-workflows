@@ -1,9 +1,9 @@
 import {SlidingPanel, Tabs} from 'argo-ui';
 import * as React from 'react';
 import {Step} from '../../../models/step';
-import {Notice} from '../../shared/components/notice';
 import {ObjectEditor} from '../../shared/components/object-editor/object-editor';
 import {Phase} from '../../shared/components/phase';
+import {Timestamp} from '../../shared/components/timestamp';
 import {EventsPanel} from '../../workflows/components/events-panel';
 import {PipelineLogsViewer} from './pipeline-logs-viewer';
 
@@ -39,19 +39,30 @@ export const StepSidePanel = ({
                         {
                             title: 'STATUS',
                             key: 'status',
-                            content: (
-                                <>
-                                    <Notice style={{marginLeft: 0, marginRight: 0}}>
-                                        <Phase value={(step.status || {}).phase} /> {(step.status || {}).message}
-                                    </Notice>
-                                    <ObjectEditor value={step.status} />
-                                </>
+                            content: step.status && (
+                                <div className='white-box'>
+                                    <div className='white-box__details'>
+                                        <div className='row white-box__details-row'>
+                                            <div className='columns small-3'>Phase</div>
+                                            <div className='columns small-9'>
+                                                <Phase value={step.status.phase} /> {step.status.message}
+                                            </div>
+                                        </div>
+                                        <div className='row white-box__details-row'>
+                                            <div className='columns small-3'>Replicas</div>
+                                            <div className='columns small-9'>{step.status.replicas}</div>
+                                        </div>
+                                        {step.status.lastScaledAt && (
+                                            <div className='row white-box__details-row'>
+                                                <div className='columns small-3'>Last scaled</div>
+                                                <div className='columns small-9'>
+                                                    <Timestamp date={step.status.lastScaledAt} />
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
                             )
-                        },
-                        {
-                            title: 'SPEC',
-                            key: 'spec',
-                            content: <ObjectEditor value={step.spec} />
                         },
                         {
                             title: 'LOGS',
@@ -62,6 +73,11 @@ export const StepSidePanel = ({
                             title: 'EVENTS',
                             key: 'events',
                             content: <EventsPanel kind='Step' namespace={namespace} name={step.metadata.name} />
+                        },
+                        {
+                            title: 'MANIFEST',
+                            key: 'manifest',
+                            content: <ObjectEditor value={step} />
                         }
                     ]}
                 />
