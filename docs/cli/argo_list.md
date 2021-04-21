@@ -2,6 +2,10 @@
 
 list workflows
 
+### Synopsis
+
+list workflows
+
 ```
 argo list [flags]
 ```

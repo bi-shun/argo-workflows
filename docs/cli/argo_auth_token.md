@@ -2,6 +2,10 @@
 
 Print the auth token
 
+### Synopsis
+
+Print the auth token
+
 ```
 argo auth token [flags]
 ```

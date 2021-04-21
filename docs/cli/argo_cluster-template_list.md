@@ -2,6 +2,10 @@
 
 list cluster workflow templates
 
+### Synopsis
+
+list cluster workflow templates
+
 ```
 argo cluster-template list [flags]
 ```

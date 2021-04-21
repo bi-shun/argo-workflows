@@ -2,6 +2,10 @@
 
 submit a workflow
 
+### Synopsis
+
+submit a workflow
+
 ```
 argo submit [FILE... | --from `kind/name] [flags]
 ```

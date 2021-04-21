@@ -2,6 +2,10 @@
 
 resume zero or more cron workflows
 
+### Synopsis
+
+resume zero or more cron workflows
+
 ```
 argo cron resume [CRON_WORKFLOW...] [flags]
 ```

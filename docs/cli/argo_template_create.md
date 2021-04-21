@@ -2,6 +2,10 @@
 
 create a workflow template
 
+### Synopsis
+
+create a workflow template
+
 ```
 argo template create FILE1 FILE2... [flags]
 ```

@@ -119,7 +119,7 @@ export const graph = (pipeline: Pipeline, steps: Step[]) => {
                 g.edges.set({v: stepId, w: topicId}, {classNames, label});
             } else if (x.log) {
                 const logId = 'log/' + stepId;
-                g.nodes.set(logId, {genre: 'log', icon: 'file-alt', label: x.stan.subject});
+                g.nodes.set(logId, {genre: 'log', icon: 'file-alt', label: 'log'});
                 g.edges.set({v: stepId, w: logId}, {classNames, label});
             } else if (x.stan) {
                 const stanId = x.stan.name || x.stan.url || 'default';

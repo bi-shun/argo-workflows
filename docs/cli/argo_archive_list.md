@@ -2,6 +2,10 @@
 
 list workflows in the archive
 
+### Synopsis
+
+list workflows in the archive
+
 ```
 argo archive list [flags]
 ```

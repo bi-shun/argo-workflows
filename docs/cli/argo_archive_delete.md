@@ -2,6 +2,10 @@
 
 delete a workflow in the archive
 
+### Synopsis
+
+delete a workflow in the archive
+
 ```
 argo archive delete UID... [flags]
 ```

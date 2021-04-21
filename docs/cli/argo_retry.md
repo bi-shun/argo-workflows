@@ -2,6 +2,10 @@
 
 retry zero or more workflows
 
+### Synopsis
+
+retry zero or more workflows
+
 ```
 argo retry [WORKFLOW...] [flags]
 ```

@@ -2,6 +2,10 @@
 
 print version information
 
+### Synopsis
+
+print version information
+
 ```
 argo version [flags]
 ```

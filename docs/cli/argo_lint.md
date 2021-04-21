@@ -2,6 +2,10 @@
 
 validate files or directories of manifests
 
+### Synopsis
+
+validate files or directories of manifests
+
 ```
 argo lint FILE... [flags]
 ```

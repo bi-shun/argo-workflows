@@ -2,6 +2,10 @@
 
 suspend zero or more workflow
 
+### Synopsis
+
+suspend zero or more workflow
+
 ```
 argo suspend WORKFLOW1 WORKFLOW2... [flags]
 ```

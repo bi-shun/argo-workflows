@@ -2,6 +2,10 @@
 
 validate a file or directory of workflow template manifests
 
+### Synopsis
+
+validate a file or directory of workflow template manifests
+
 ```
 argo template lint (DIRECTORY | FILE1 FILE2 FILE3...) [flags]
 ```

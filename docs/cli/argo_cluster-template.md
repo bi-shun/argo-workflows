@@ -2,6 +2,10 @@
 
 manipulate cluster workflow templates
 
+### Synopsis
+
+manipulate cluster workflow templates
+
 ```
 argo cluster-template [flags]
 ```

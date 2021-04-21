@@ -2,6 +2,10 @@
 
 delete a cron workflow
 
+### Synopsis
+
+delete a cron workflow
+
 ```
 argo cron delete [CRON_WORKFLOW... | --all] [flags]
 ```

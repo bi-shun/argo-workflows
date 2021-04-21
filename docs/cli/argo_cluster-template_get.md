@@ -2,6 +2,10 @@
 
 display details about a cluster workflow template
 
+### Synopsis
+
+display details about a cluster workflow template
+
 ```
 argo cluster-template get CLUSTER WORKFLOW_TEMPLATE... [flags]
 ```

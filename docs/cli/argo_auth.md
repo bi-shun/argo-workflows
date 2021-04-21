@@ -2,6 +2,10 @@
 
 manage authentication settings
 
+### Synopsis
+
+manage authentication settings
+
 ```
 argo auth [flags]
 ```

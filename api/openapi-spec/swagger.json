@@ -4048,6 +4048,12 @@
             "type": "string"
           }
         },
+        "env": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.EnvVar"
+          }
+        },
         "image": {
           "type": "string"
         },
@@ -4066,13 +4072,20 @@
       "type": "object",
       "properties": {
         "branch": {
-          "description": "+kubebuilder:default=.",
-          "type": "string"
+          "type": "string",
+          "title": "+kubebuilder:default=main"
+        },
+        "env": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.EnvVar"
+          }
         },
         "image": {
           "type": "string"
         },
         "path": {
+          "description": "+kubebuilder:default=.",
           "type": "string"
         },
         "url": {
@@ -4125,17 +4138,37 @@
     "github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Kafka": {
       "type": "object",
       "properties": {
+        "brokers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "name": {
           "type": "string",
           "title": "+kubebuilder:default=default"
         },
+        "net": {
+          "$ref": "#/definitions/github.com.argoproj_labs.argo_dataflow.api.v1alpha1.KafkaNET"
+        },
         "topic": {
           "type": "string"
         },
-        "url": {
+        "version": {
           "type": "string"
         }
       }
+    },
+    "github.com.argoproj_labs.argo_dataflow.api.v1alpha1.KafkaNET": {
+      "type": "object",
+      "properties": {
+        "tls": {
+          "$ref": "#/definitions/github.com.argoproj_labs.argo_dataflow.api.v1alpha1.TLS"
+        }
+      }
+    },
+    "github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Log": {
+      "type": "object"
     },
     "github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Message": {
       "type": "object",
@@ -4264,6 +4297,9 @@
         "kafka": {
           "$ref": "#/definitions/github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Kafka"
         },
+        "log": {
+          "$ref": "#/definitions/github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Log"
+        },
         "name": {
           "type": "string",
           "title": "+kubebuilder:default=default"
@@ -4369,7 +4405,7 @@
         },
         "serviceAccountName": {
           "type": "string",
-          "title": "+kubebuilder:default=pipeline-runner"
+          "title": "+kubebuilder:default=pipeline"
         },
         "sinks": {
           "type": "array",
@@ -4400,7 +4436,7 @@
     "github.com.argoproj_labs.argo_dataflow.api.v1alpha1.StepStatus": {
       "type": "object",
       "properties": {
-        "lastScaleTime": {
+        "lastScaledAt": {
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "message": {
@@ -4437,6 +4473,9 @@
           "title": "volume name"
         }
       }
+    },
+    "github.com.argoproj_labs.argo_dataflow.api.v1alpha1.TLS": {
+      "type": "object"
     },
     "google.protobuf.Any": {
       "type": "object",

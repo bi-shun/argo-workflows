@@ -117,11 +117,14 @@ export const PipelineDetails = ({history, match, location}: RouteComponentProps<
                             graph={graph(pipeline, steps)}
                             nodeGenresTitle='Type'
                             nodeGenres={{
+                                cat:true,
                                 container: true,
+                                cron:true,
                                 filter: true,
                                 git: true,
                                 group: true,
                                 handler: true,
+                                log:true,
                                 map: true,
                                 kafka: true,
                                 stan: true

@@ -2,6 +2,10 @@
 
 get a workflow in the archive
 
+### Synopsis
+
+get a workflow in the archive
+
 ```
 argo archive get UID [flags]
 ```

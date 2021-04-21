@@ -2,6 +2,10 @@
 
 resubmit one or more workflows
 
+### Synopsis
+
+resubmit one or more workflows
+
 ```
 argo resubmit [WORKFLOW...] [flags]
 ```

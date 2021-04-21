@@ -2,6 +2,10 @@
 
 validate files or directories of cron workflow manifests
 
+### Synopsis
+
+validate files or directories of cron workflow manifests
+
 ```
 argo cron lint FILE... [flags]
 ```
