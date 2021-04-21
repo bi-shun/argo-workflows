@@ -3,10 +3,12 @@ import {Step} from '../../../../models/step';
 import {Graph} from '../../../shared/components/graph/types';
 import {Icon} from '../../../shared/components/icon';
 
-type Type = '' | 'container' | 'filter' | 'git' | 'group' | 'handler' | 'map';
+type Type = '' | 'cat' | 'container' | 'filter' | 'git' | 'group' | 'handler' | 'map';
 
 const stepIcon = (type: Type): Icon => {
     switch (type) {
+        case 'cat':
+            return 'exchange-alt';
         case 'container':
             return 'cube';
         case 'filter':
@@ -38,7 +40,21 @@ export const graph = (pipeline: Pipeline, steps: Step[]) => {
         const stepId = 'step/' + spec.name;
         const status = step.status || {phase: '', replicas: 0};
 
-        const type: Type = spec.container ? 'container' : spec.filter ? 'filter' : spec.git ? 'git' : spec.group ? 'group' : spec.handler ? 'handler' : spec.map ? 'map' : '';
+        const type: Type = spec.cat
+            ? 'cat'
+            : spec.container
+            ? 'container'
+            : spec.filter
+            ? 'filter'
+            : spec.git
+            ? 'git'
+            : spec.group
+            ? 'group'
+            : spec.handler
+            ? 'handler'
+            : spec.map
+            ? 'map'
+            : '';
 
         const nodeLabel = status.replicas !== 1 ? spec.name + ' (x' + status.replicas + ')' : spec.name;
         g.nodes.set(stepId, {genre: type, label: nodeLabel, icon: stepIcon(type), classNames: status.phase});
@@ -62,8 +78,12 @@ export const graph = (pipeline: Pipeline, steps: Step[]) => {
                 ' (' +
                 ((ss.lastMessage || {}).data || emptySet) +
                 ')';
-            if (x.kafka) {
-                const kafkaId = x.kafka || x.kafka.url || 'default';
+            if (x.cron) {
+                const cronId = 'cron/' + stepId + '/' + x.cron.schedule;
+                g.nodes.set(cronId, {genre: 'cron', icon: 'clock', label: x.cron.schedule});
+                g.edges.set({v: cronId, w: stepId}, {classNames, label});
+            } else if (x.kafka) {
+                const kafkaId = x.kafka.name || x.kafka.url || 'default';
                 const topicId = 'kafka/' + kafkaId + '/' + x.kafka.topic;
                 g.nodes.set(topicId, {genre: 'kafka', icon: topicIcon, label: x.kafka.topic});
                 g.edges.set({v: topicId, w: stepId}, {classNames, label});
@@ -97,6 +117,10 @@ export const graph = (pipeline: Pipeline, steps: Step[]) => {
                 const topicId = 'kafka/' + kafkaId + '/' + x.kafka.topic;
                 g.nodes.set(topicId, {genre: 'kafka', icon: topicIcon, label: x.kafka.topic});
                 g.edges.set({v: stepId, w: topicId}, {classNames, label});
+            } else if (x.log) {
+                const logId = 'log/' + stepId;
+                g.nodes.set(logId, {genre: 'log', icon: 'file-alt', label: x.stan.subject});
+                g.edges.set({v: stepId, w: logId}, {classNames, label});
             } else if (x.stan) {
                 const stanId = x.stan.name || x.stan.url || 'default';
                 const subjectId = 'stan/' + stanId + '/' + x.stan.subject;

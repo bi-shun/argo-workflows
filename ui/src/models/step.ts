@@ -9,6 +9,7 @@ export interface Step {
     metadata: ObjectMeta;
     spec: {
         name: string;
+        cat?: {};
         container?: {};
         filter?: string;
         git?: {};
@@ -17,7 +18,8 @@ export interface Step {
         map?: string;
         sources: {
             name?: string;
-            stan: {name?: string; url?: string; subject: string};
+            cron?: {schedule: string};
+            stan?: {name?: string; url?: string; subject: string};
             kafka?: {
                 name?: string;
                 url?: string;
@@ -26,7 +28,8 @@ export interface Step {
         }[];
         sinks: {
             name?: string;
-            stan: {name?: string; url?: string; subject: string};
+            log?: {};
+            stan?: {name?: string; url?: string; subject: string};
             kafka?: {
                 name?: string;
                 url?: string;
