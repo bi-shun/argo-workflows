@@ -70,6 +70,9 @@
       },
       "type": "object"
     },
+    "github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Cat": {
+      "type": "object"
+    },
     "github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Container": {
       "properties": {
         "args": {
@@ -101,6 +104,14 @@
             "$ref": "#/definitions/io.k8s.api.core.v1.VolumeMount"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Cron": {
+      "properties": {
+        "schedule": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -362,6 +373,9 @@
     },
     "github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Source": {
       "properties": {
+        "cron": {
+          "$ref": "#/definitions/github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Cron"
+        },
         "kafka": {
           "$ref": "#/definitions/github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Kafka"
         },
@@ -410,6 +424,9 @@
     },
     "github.com.argoproj_labs.argo_dataflow.api.v1alpha1.StepSpec": {
       "properties": {
+        "cat": {
+          "$ref": "#/definitions/github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Cat"
+        },
         "container": {
           "$ref": "#/definitions/github.com.argoproj_labs.argo_dataflow.api.v1alpha1.Container"
         },
